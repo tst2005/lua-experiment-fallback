@@ -11,6 +11,18 @@ preload["foo.bar"] = function()
         return {_NAME="foo.bar"}
 end
 
+preload["fallback.mod1"] = function()
+        return {_NAME="mod1(fallback)"}
+end
+
+preload["fallback.mod2"] = function()
+        return {_NAME="mod2(fallback)"}
+end
+
+
+
+assert( _require"mod1"._NAME == "mod1(file)" ) -- the mod1.lua file, not the preload["mod1"] one
+assert( _require"mod2"._NAME == "mod2(fallback)" ) -- the fallback mod2 because the mod2.lua is not exists.
 
 
 assert( require "string" ==  _require("string") )

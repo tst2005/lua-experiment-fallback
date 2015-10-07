@@ -65,6 +65,8 @@ local function bigfunction_new(with_loaded)
 			p = res
 		elseif not _LOADED[modname] then
 			p = true
+		else
+			p = _LOADED[name]
 		end
 
 		_LOADED[modname] = p
